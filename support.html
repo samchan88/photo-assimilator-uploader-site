@@ -18,20 +18,42 @@
 </header>
 <main>
   <div class="card">
-    <h2>Contact</h2>
-    <p>For help with Photo Assimilator Uploader, contact:</p>
+    <h2>Contact &amp; Assistance</h2>
+    <p>For help, bug reports, or feedback regarding Photo Assimilator Uploader, contact:</p>
     <p><strong>schankl@gmail.com</strong></p>
-    <p>When reporting a problem, include the uploader version, Android version, whether the Photo Assimilator server is PC or Home Assistant, and the visible error message.</p>
-    <p><strong>Do not send</strong> Auto Upload device tokens, passwords, or private photos/videos by email.</p>
+    <p>When reporting an issue, please include:</p>
+    <ul>
+      <li>App version (e.g. <code>v0.6.1-vault</code> / versionCode 16)</li>
+      <li>Android device model and OS version</li>
+      <li>Server deployment type (Home Assistant add-on or standalone PC)</li>
+      <li>Visible error messages or connection status banner text</li>
+    </ul>
+    <p><strong>Security notice:</strong> Never send Auto Upload device tokens, master passwords, or private family media in email correspondence.</p>
   </div>
 
   <div class="card">
-    <h2>Current test status</h2>
-    <p>The current Internal testing build (<strong>v0.5.1</strong>, versionCode 13) supports manual foreground <strong>Sync now</strong> and automatic background Wi-Fi upload, with device reboot recovery and offline local gallery browsing.</p>
-  </div>  
+    <h2>Current Capabilities &amp; Release Status</h2>
+    <p>Current Internal testing build: <strong>v0.6.1-vault (versionCode 16)</strong></p>
+    <ul>
+      <li><strong>Device Private Vault:</strong> Manage private albums and people profiles stored strictly on your device.</li>
+      <li><strong>Selective Family Sharing:</strong> Stream designated shared albums with advisory face hints directly to your server.</li>
+      <li><strong>Background &amp; Manual Sync:</strong> Automatic background Wi-Fi synchronization via Android WorkManager with reboot recovery.</li>
+      <li><strong>Local Gallery:</strong> High-resolution on-device media browser that works completely offline.</li>
+      <li><strong>Location Preservation:</strong> EXIF GPS coordinates retained across Android 10+ scoped storage.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Common Troubleshooting Tips</h2>
+    <ul>
+      <li><strong>Google Play Download Stalling:</strong> If downloading from Google Play Internal Testing stalls on devices with VPN or Tailscale active, temporarily disconnect Tailscale while initiating the Play Store download. Reconnect once the app is installed.</li>
+      <li><strong>Connection Not Reachable:</strong> Ensure your phone can reach the Photo Assimilator server IP/port (port <code>8100</code> on Home Assistant). If using Tailscale, ensure Tailscale is connected on both device and server.</li>
+      <li><strong>Samsung Power Saving:</strong> For reliable background synchronization when the phone screen is off, set app Battery to <em>Unrestricted</em> and disable Samsung aggressive power saving for the companion app.</li>
+    </ul>
+  </div>
 </main>
 <footer>
-  <a href="privacy.html">Privacy Policy</a>
+  <a href="privacy.html">Privacy Policy</a> · <a href="index.html">About</a>
 </footer>
 </body>
 </html>

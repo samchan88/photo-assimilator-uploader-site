@@ -9,7 +9,7 @@
 <body>
 <header>
   <h1>Privacy Policy</h1>
-  <p class="muted">Photo Assimilator Uploader · Last updated 16 September 2026</p>
+  <p class="muted">Photo Assimilator Uploader · Last updated 6 November 2026</p>
   <nav>
   <a href="index.html">About</a>
   <a href="privacy.html">Privacy Policy</a>
@@ -17,7 +17,7 @@
 </nav>
 </header>
 <main>
-  <p>Photo Assimilator Uploader is an Android companion for a user-controlled Photo Assimilator photo and video library. It reads photos and videos from device folders selected by the user and sends selected or new media directly to the Photo Assimilator server address configured by that user.</p>
+  <p>Photo Assimilator Uploader is an Android companion for a self-hosted, user-controlled Photo Assimilator photo and video library. It respects user privacy by keeping device media, private albums, and personal face tags local by default, sending media directly to the user-configured Photo Assimilator server only when explicitly synchronized or shared.</p>
 
   <h2>Developer and privacy contact</h2>
   <p>App: <strong>Photo Assimilator Uploader</strong><br>
@@ -25,55 +25,62 @@
 
   <h2>Information the app accesses</h2>
   <ul>
-    <li>Photos and videos available through Android MediaStore when permission is granted.</li>
-    <li>Media metadata needed to identify and transfer files, including filename, media type, size, timestamps, MediaStore identifier/URI and relative folder path.</li>
-    <li>A SHA-256 content hash calculated locally to determine whether the same file already exists on the configured Photo Assimilator server.</li>
-    <li>The Photo Assimilator server address configured by the user.</li>
-    <li>A dedicated Auto Upload device token issued by that Photo Assimilator server.</li>
-    <li>Local synchronization state such as selected folders, baseline timestamps/IDs, queue status, retry state and server-confirmed resumable-upload offsets.</li>
+    <li><strong>Photos and videos:</strong> Media files stored on your Android device through MediaStore when permission is granted.</li>
+    <li><strong>Media location metadata:</strong> When permission is granted (<code>ACCESS_MEDIA_LOCATION</code>), original capture GPS coordinates (latitude, longitude) are read to preserve location metadata during transfer.</li>
+    <li><strong>Media metadata:</strong> Filename, MIME type, size, timestamps, MediaStore identifier/URI, and relative folder path.</li>
+    <li><strong>Content hashes:</strong> A SHA-256 hash calculated locally on the device to prevent uploading redundant duplicate bytes.</li>
+    <li><strong>Device Private Vault:</strong> Private albums, media associations, and private people names stored strictly on-device in sandboxed application database storage.</li>
+    <li><strong>On-device face hints:</strong> Facial detection and embedding analysis run on-device using local models. When you choose to share a private album with your family, bounding boxes and user-assigned names may be attached as advisory hints so household members do not need to re-tag faces. Raw facial biometric vectors are never sent to developer cloud services.</li>
+    <li><strong>Server connection settings:</strong> The user-configured Photo Assimilator service address and a dedicated, revocable bearer device token.</li>
+    <li><strong>Local sync state:</strong> Selected folder rules, baseline IDs, queue status, and server-confirmed resumable byte offsets.</li>
   </ul>
-  <p>The app does not read contacts, messages, call logs, installed-app inventory or precise device location.</p>
+  <p>The app does not read contacts, text messages, call logs, phone state, or device location outside photo EXIF data.</p>
 
   <h2>How photos and videos are used</h2>
-  <p>Photo and video access is the app's core functionality. The app uses broad media access so it can enumerate user-enabled MediaStore folders such as <code>DCIM/Camera</code>, establish a “new items from now on” baseline, find newly captured items during later syncs, and upload those items without requiring the user to manually pick the same folder contents every time.</p>
-  <p>The app does not modify or delete the source photo or video from the phone after upload.</p>
+  <p>Media access is the app's core function. The app allows users to:</p>
+  <ul>
+    <li>Browse local device photos and videos in an offline gallery without connecting to any server.</li>
+    <li>Create Device Private Vault albums that remain strictly on the phone.</li>
+    <li>Selectively share specific albums with your household Photo Assimilator server.</li>
+    <li>Automatically back up selected folders (e.g., <code>DCIM/Camera</code>) over unmetered Wi-Fi.</li>
+  </ul>
+  <p>The app does not modify or delete original photos or videos from your phone after upload.</p>
 
   <h2>Where media is sent</h2>
-  <p>Media and related transfer metadata are sent only to the Photo Assimilator server address configured by the user. The uploader does not route photo or video content through a developer-operated cloud service.</p>
-  <p>If a user configures an <code>http://</code> address, traffic is not encrypted in transit. HTTPS or a secure private network is recommended.</p>
+  <p>Media files, album manifests, and transfer metadata are sent <strong>strictly and directly</strong> to the Photo Assimilator server address configured by the user. The app does not route photos, videos, or face data through any developer-operated cloud servers.</p>
+  <p>If you unshare a shared album, an unshare notification is sent to your self-hosted server, which safely moves media no longer referenced by other shared albums to the server's 30-day Recycle Bin.</p>
+  <p>If an unencrypted <code>http://</code> address is configured, network traffic is visible on the local network. A private network (e.g. Tailscale or WireGuard) or HTTPS is strongly recommended.</p>
 
   <h2>Device credential security</h2>
-  <p>The uploader uses a dedicated, revocable Auto Upload device token rather than the Photo Assimilator Owner password. The token is encrypted on the Android device using Android Keystore-backed protection in the current implementation. The Photo Assimilator server stores a non-reversible verifier rather than the plaintext token.</p>
+  <p>The uploader uses a dedicated, revocable Auto Upload device token rather than the Photo Assimilator Owner master password. The token is stored securely using Android Keystore encryption.</p>
 
   <h2>Local storage and retention</h2>
-  <p>The app stores configuration and synchronization state locally so it can remember selected folders, avoid unnecessary work and resume interrupted transfers. Clearing app data or uninstalling removes that local application state.</p>
-  <p>Successfully uploaded media remains on the configured Photo Assimilator server according to the user's own library and storage choices. Uninstalling the Android uploader does not delete copies already uploaded to that server.</p>
+  <p>All local database records (private albums, private person profiles, and sync queues) are stored inside Android's sandboxed private storage. Uninstalling the app removes all on-device private album and profile records. Uploaded items already present on your self-hosted server are preserved according to your server retention policies.</p>
 
   <h2>Sharing, advertising and analytics</h2>
-  <p>The current test builds contain no advertising SDK and no developer-operated analytics service. The developer does not sell photos, videos or uploader data.</p>
-  <p>Google Play may process information associated with downloading, installing and operating Play-distributed apps under Google's own terms and privacy policies.</p>
+  <p>The app contains <strong>no advertising SDKs</strong>, <strong>no third-party tracking services</strong>, and <strong>no developer-operated analytics</strong>. The developer does not collect, sell, or monetize your photos, videos, or usage data.</p>
+  <p>Google Play may process diagnostic telemetry associated with downloading, installing, and updating the application under Google's standard terms and privacy policies.</p>
 
   <h2>Children's privacy</h2>
-  <p>Photo Assimilator Uploader is a personal photo/video library administration and backup utility. It is not designed for or directed to children.</p>
+  <p>Photo Assimilator Uploader is a self-hosted personal library companion and is not directed to children.</p>
 
   <h2>User choices and controls</h2>
   <ul>
-    <li>Deny or change Android photo/video permissions in system settings.</li>
-    <li>Select which discovered folders are enabled.</li>
-    <li>Choose whether a newly enabled folder starts with “New items from now on” or includes existing items.</li>
-    <li>Revoke the uploader's dedicated device credential from Photo Assimilator.</li>
-    <li>Delete uploaded media from Photo Assimilator independently of the copy on the phone.</li>
+    <li>Grant, deny, or revoke Android photo, video, and media location permissions at any time.</li>
+    <li>Keep media strictly local in the Device Private Vault or choose which albums to share.</li>
+    <li>Enable or disable automatic background Wi-Fi synchronization.</li>
+    <li>Unshare any previously shared album, moving server media to the server Recycle Bin.</li>
+    <li>Revoke the device token directly from the Photo Assimilator server.</li>
   </ul>
-  <p>If Android grants only selected-media access rather than full media access, the uploader reports that complete selected-folder protection cannot be guaranteed.</p>
 
   <h2>Changes to this policy</h2>
-  <p>This policy will be updated when Photo Assimilator Uploader materially changes how it accesses, transfers, stores or shares user data.</p>
+  <p>This policy is updated whenever changes to app functionality affect how data is accessed, stored, or transferred.</p>
 
   <h2>Contact</h2>
-  <p>For privacy or support questions, contact <strong>schankl@gmail.com</strong>.</p>
+  <p>For questions or support regarding this privacy policy, contact: <strong>schankl@gmail.com</strong>.</p>
 </main>
 <footer>
-  <a href="index.html">Photo Assimilator Uploader</a>
+  <a href="index.html">Photo Assimilator Uploader</a> · Version v0.6.1-vault
 </footer>
 </body>
 </html>

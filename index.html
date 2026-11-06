@@ -9,7 +9,7 @@
 <body>
 <header>
   <h1>Photo Assimilator Uploader</h1>
-  <p class="muted">Android companion for a user-controlled Photo Assimilator library.</p>
+  <p class="muted">Native Android companion for self-hosted Photo Assimilator libraries.</p>
   <nav>
   <a href="index.html">About</a>
   <a href="privacy.html">Privacy Policy</a>
@@ -19,20 +19,27 @@
 <main>
   <div class="card">
     <h2>About</h2>
-    <p>Photo Assimilator Uploader discovers photos and videos in user-selected device folders (such as the Camera folder) and backs them up directly to your self-hosted Photo Assimilator server address.</p>
-    <p>Current Internal testing builds (<strong>v0.5.1</strong>) support both manual <strong>Sync now</strong> and automatic background Wi-Fi synchronization via Android WorkManager, resumable transfer after network interruptions, duplicate prevention with SHA-256 content hashes, an offline local gallery browser, and on-demand folder archive upload.</p>
-    <p>The uploader contains no ads, no third-party trackers, and routes no media through developer cloud services.</p>
+    <p>Photo Assimilator Uploader is the privacy-first mobile companion for a self-hosted Photo Assimilator library. It connects directly to your own server over a secure local network, VPN, or HTTPS—with no third-party cloud intermediaries, no advertising SDKs, and no tracking analytics.</p>
+    
+    <h3>Key Capabilities</h3>
+    <ul>
+      <li><strong>Device Private Vault:</strong> Photos, videos, and private people profiles stay strictly on your personal device by default.</li>
+      <li><strong>Selective Family Sharing:</strong> Group media into private albums and selectively share only designated albums with your household Photo Assimilator server.</li>
+      <li><strong>On-Device Face Processing:</strong> Recognizes faces and bundles private name tags as advisory hints to family members during shared album uploads without sending raw biometric models to developer cloud services.</li>
+      <li><strong>Automatic Background &amp; Manual Sync:</strong> Automatic background Wi-Fi upload via Android WorkManager, resumable transfers for large video files, and on-demand foreground <em>Sync now</em>.</li>
+      <li><strong>Offline Local Gallery:</strong> Browse high-resolution device originals even when offline or disconnected from your server.</li>
+      <li><strong>Duplicate Prevention:</strong> SHA-256 preflight hashing prevents redundant re-transmissions.</li>
+    </ul>
   </div>
 
   <div class="card">
     <h2>Privacy and support</h2>
-    <p><a href="privacy.html">Read the Privacy Policy</a></p>
-    <p>Support: <strong>schankl@gmail.com</strong></p>
+    <p><a href="privacy.html">Read the complete Privacy Policy</a></p>
+    <p>Support contact: <strong>schankl@gmail.com</strong></p>
   </div>
 </main>
 <footer>
-  Photo Assimilator Uploader · v0.5.1 Internal testing
+  Photo Assimilator Uploader · v0.6.1-vault (versionCode 16) Internal testing
 </footer>
- 
 </body>
 </html>
